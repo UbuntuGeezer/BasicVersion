@@ -1,1 +1,1 @@
-export curr_ver=1.0.0
+export curr_ver=2.0.2

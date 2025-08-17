@@ -1,65 +1,75 @@
-README - Basic/BasicVersion (Lenovo) project documentation.<br>
-8/10/25.	wmk.
+<head><title> Basic/BasicVersion (Lenovo) project documentation. </title></head>
+<p>README - Basic/BasicVersion (Lenovo) project documentation.<br>
+8/10/25.    wmk.</p>
+
 <h3>Modification History.</h3>
+
 <pre><code>
 8/10/25.    wmk.    original;edited for Basic from Tutoring.
 </code></pre>
+
 <h3 id="IX">Documentation Sections.</h3>
+
 <pre><code><a href="#1.0">link</a> 1.0 Project Description - overall project description.
 <a href="#2.0">link</a> 2.0 Dependencies - project dependencies.
 <a href="#3.0">link</a> 3.0 Version Naming - version naming conventions.
 <a href="#4.0">link</a> 4.0 Project Build - step-by-step build instructions.
 <a href="#5.0">link</a> 5.0 Significant Notes - important stuff not documented elsewhere.
 </code></pre>
+
 <h3 id="1.0">1.0 Project Description.</h3>
-The BasicVersion project repository manages Basic system builds
+
+<p>The BasicVersion project repository manages Basic system builds
 across multiple computers. Each computer is given a unique machine ID that
 corresponds to a configuration specific to that machine. A given computer may 
 have several machine IDs, but only one at a time may be the "running" computer
-designation.
+designation.</p>
 
-No specific system is considered to be the "golden" system for Basic. To
+<p>No specific system is considered to be the "golden" system for Basic. To
 support updating and maintenance from any of the development systems the
 Basic system may be updated from any development system. BasicVersion
 supports version control of the various pieces of Basic across all the
-development systems.
+development systems.</p>
 
-Version control is accomplished by having each computer initialize its setup so
+<p>Version control is accomplished by having each computer initialize its setup so
 that whenever a Terminal session is started, the Terminal session has system
 environment variables set identifying the machine and any operating system
 characteristics, as well as the Basic system version. These environment
 variables are then available for any shells or other programs that execute under
 the parent Terminal session.
 <a href="#IX">Index</a>
-//=============================================================================
+//=============================================================================</p>
+
 <h3 id="2.0">2.0 Dependencies.</h3>
-The BasicVersion project depends upon the system-wide configuration file system
+
+<p>The BasicVersion project depends upon the system-wide configuration file system
 for storing system configuration information. On GNU-based systems this file
 system is typically resident in a ~/.config folder. On Windows-based systems this
 file system is related to the Windows registry of installed apps. Since all
 current machines are running GNU-based systems, only those systems are addressed
-in this version of the documentation.
+in this version of the documentation.</p>
 
-The BasicVersion project depends upon the folder ~/.config/Basic for
+<p>The BasicVersion project depends upon the folder ~/.config/Basic for
 storing the Basic configuration information. The config.sh file in that
 folder contains all of the accounting configuration environment variables. The
-APPCONFIG\_PATH system environment variable within this config.sh file is
-always set to point to the ~/.config/Basic folder.
+APPCONFIG_PATH system environment variable within this config.sh file is
+always set to point to the ~/.config/Basic folder.</p>
 
-If the computer is running a non-persistent OS, it is left to the user to ensure
+<p>If the computer is running a non-persistent OS, it is left to the user to ensure
 that the system startup initializes the ~/.config/Basic/config.sh file and
 sets up .bashrc so that any Terminal session has the path to the Basic
-configuration environment variables set at startup.
+configuration environment variables set at startup.</p>
 
-Whenever a user commences working on accounting, on entering the Terminal
+<p>Whenever a user commences working on accounting, on entering the Terminal
 session he needs to run the subsystem control shell. System-wide aliases have
 been defined to facilitate this. The "chsubsys" alias changes the active
 subsystem within which the user is commencing work. While several subsystems are
 supported on any given development system, the subsystem which is relevant
-for Basic sessions is "Basic".
+for Basic sessions is "Basic".</p>
 
-Within each branch of the BasicVersion repository, the following files are
-needed:
+<p>Within each branch of the BasicVersion repository, the following files are
+needed:</p>
+
 <pre><code>
 config.sh.< machine-id >.basic - generic Basic configuration file updated
   with each cyle change.
@@ -67,107 +77,117 @@ config.sh.< machine-id >.basic - generic Basic configuration file updated
 config.sh.< machine-id >.basic.$Basic_BLD - Basic configuration file
   created by administrator from config.sh.< machine-id >.Basic file with latest
   configuration information.
-  
+
 CurrVersion - current Basic version on this branch; updated by SetVersion
   shell from the *master branch.
 </code></pre>
 
-The system SYSEDIT shell updates the running Basic configuration with the
-following command:
->SYSEDITv3.< machine-id >  config  basic<br>
+<p>The system SYSEDIT shell updates the running Basic configuration with the
+following command:</p>
+
+<blockquote>
+  <p>SYSEDITv3.&lt; machine-id >  config  basic<br>
 See the documentation within the SYSEDITv3 shell for details on this process.
 <a href="#IX">Index</a>
-//=============================================================================
-<h3 id="3.0">3.0 Version Naming.</h3>
-Basic uses one version name, Basic_BLD. The version is comprised of i.j.k
-where 'i' is the version number, 'j' is the revision number, and 'k' is the
-cycle number. Whenever ANY Basic data or code is modified, the Basic\_BUILD
-cycle is advanced. Whenever ANY
+//=============================================================================</p>
+</blockquote>
 
-There is no requirement that the various \_BUILD cycles be synchronized, since
-this would be an overwhelming management issue. The \_BUILD cycles do, however,
+<h3 id="3.0">3.0 Version Naming.</h3>
+
+<p>Basic uses one version name, Basic_BLD. The version is comprised of i.j.k
+where 'i' is the version number, 'j' is the revision number, and 'k' is the
+cycle number. Whenever ANY Basic data or code is modified, the Basic_BUILD
+cycle is advanced. Whenever ANY</p>
+
+<p>There is no requirement that the various _BUILD cycles be synchronized, since
+this would be an overwhelming management issue. The _BUILD cycles do, however,
 provide a tracking mechanism for releases of publisher territories. Whenever a
-new release of Basic is built, it contains the file:
+new release of Basic is built, it contains the file:</p>
+
 <pre><code>
     Basic_BLD.a.b.c - the Basic build cycle
 </code></pre>
-This provides the tracking information to determine where an issue may have
-been introduced into the Basic system.
 
-BasicVersion has a \*git branch for each development system. The BasicVersion
+<p>This provides the tracking information to determine where an issue may have
+been introduced into the Basic system.</p>
+
+<p>BasicVersion has a *git branch for each development system. The BasicVersion
 project within each branch has the version name of the current build version
 present on that system's branch. The central GitHub repository for BasicVersion
 is constantly updated by each development system as changes are made for its
-branch. In turn, the \*master branch is always updated by a development system
+branch. In turn, the *master branch is always updated by a development system
 whenever it advances a build cycle. This way, all development branches know what
 the newest build cycle is for each component. They can then consistently advance
-the build cycles so there is no redundant use of any build cycle.
+the build cycles so there is no redundant use of any build cycle.</p>
 
-If a development system is "behind" any of the \*master branch build cycles, it
+<p>If a development system is "behind" any of the *master branch build cycles, it
 should be considered "out-of-date". To bring itself "up-to-date" will involve
-either an ArchivingBackups reload of the out-of-date data, or a \*git "pull"
-from the Basic code repository as appropriate.
+either an ArchivingBackups reload of the out-of-date data, or a *git "pull"
+from the Basic code repository as appropriate.</p>
 
-**Basic\_BLD.**<br>
-The Basic\_BLD level tracks the cycles of changes within the
+<p><strong>Basic_BLD.</strong><br>
+The Basic_BLD level tracks the cycles of changes within the
 Basic system. Whenever either of the Projects-Geany, Procs-Dev folders have
-one or more files changed, the Basic\_BLD level should be advanced. Since the
-Basic\_BLD level is set within the Basic/BasicVersion project, the
-Accounitng project is considered advanced with the Basic\_BLD level.
+one or more files changed, the Basic_BLD level should be advanced. Since the
+Basic_BLD level is set within the Basic/BasicVersion project, the
+Accounitng project is considered advanced with the Basic_BLD level.</p>
 
-The revision number of the Basic\_BLD level tracks the releases of the publisher
+<p>The revision number of the Basic_BLD level tracks the releases of the publisher
 territories to the congregation for distribution. Whenever a new "release" of
 the publisher territories is put out for distribution, the revision number of
-the Basic\_BLD level is the base for that release. The Basic\_BLD cycle is then
-reset to 0 and starts a new series of cycles as discussed previously.
+the Basic_BLD level is the base for that release. The Basic_BLD cycle is then
+reset to 0 and starts a new series of cycles as discussed previously.</p>
 
-The version number of the Basic\_BLD level is used to track MAJOR changes in the
+<p>The version number of the Basic_BLD level is used to track MAJOR changes in the
 publisher territory data. The version number should only be changed in the event
 of moving the critical files to a different folder system, or when there is
-a change in the file structure of the Basic system.
+a change in the file structure of the Basic system.</p>
 
-The shell files IncCyc.sh, IncRev.sh, and IncVer.sh increment the cycle,
+<p>The shell files IncCyc.sh, IncRev.sh, and IncVer.sh increment the cycle,
 revision, and cycle elements of the Basic_BLD version.
 <a href="#IX">Index</a>
-//=============================================================================
+//=============================================================================</p>
+
 <h3 id="4.0">4.0 Project Build.</h3>
-There is no "build" procedure for the BasicVersion project. Instead, shell
+
+<p>There is no "build" procedure for the BasicVersion project. Instead, shell
 files perform all the BasicVersion functions. A "version" consists of three
 elements: version, revision, and cycle. The version numbering begins at 1; the
 revision and cycle numbers begin at 0. The version number for the Basic
-system is set in the environment variable Basic_BLD.
+system is set in the environment variable Basic_BLD.</p>
 
-The version number is the major version. This number advances whenever there is
+<p>The version number is the major version. This number advances whenever there is
 a major, usually system-wide, change made to the application/modules that the
 version control identifies. An example would be when the parent folders for the
-project are anchored in a different folder on the host system.
+project are anchored in a different folder on the host system.</p>
 
-The revision number is the revision level on the major version. This number
+<p>The revision number is the revision level on the major version. This number
 advances whenever there is a major revision to the application/modules
 identified by the version control. An example would be when the schema for a
-system-wide database is changed.
+system-wide database is changed.</p>
 
-The cycle number is the cycle number on the revision level. This number advances
+<p>The cycle number is the cycle number on the revision level. This number advances
 whenever there is any update or change in the application/modules identified by
 the version control. An example would be when new data is downloaded into the
-application.
+application.</p>
 
-The BasicVersion current build number is maintained in the file
+<p>The BasicVersion current build number is maintained in the file
 "CurrVersion". The BasicVersion repository
-has a \*master branch that contains the CurrVersion file, and the shell
+has a *master branch that contains the CurrVersion file, and the shell
 files for Basic version management. Each machine utilizing the
 BasicVersion project has its own branch of the repository. In addition, each
 branch of the AccngVersion repository has its own CurrVersion file. The
 version within the *master CurrVersion file should exactly match the
 *Basic_BLD environment variable value set in that machine's loaded accounting
-configuration file.
+configuration file.</p>
 
-If the CurrVersion file within a branch does not match the running *master
+<p>If the CurrVersion file within a branch does not match the running *master
 CurrVersion file, that branch is either "ahead of" or "behind" the running
 version. While this may be acceptable on a development computer, the mismatch
-will possibly result in inaccuracies or errors in the accounting system.
+will possibly result in inaccuracies or errors in the accounting system.</p>
 
-Folowing are the shell files in the *master branch for BasicVersion:
+<p>Folowing are the shell files in the *master branch for BasicVersion:</p>
+
 <pre><code>
 IncCyc.sh - increment cycle number in current < type > version.
 IncRev.sh - increment revision number in current < type > version.
@@ -176,16 +196,18 @@ SetVersion.sh - "check in" the Current--Version files and set in target branch.
 CheckSysVersion.sh - check the CurrentVersion in the active branch against
  the version in the MachVersion/CurrentVersion.
 </code></pre>
-The CurrVersion file is initialized for
+
+<p>The CurrVersion file is initialized for
 the Basic project as "1.0.0". From that time forward, each value is
 changed by the IncCyc, IncRev, and IncVer shells. It should be noted that there
 is no tracking to force any given version number to be recorded in any of th
 child branches. Hence, version numbers may be skipped in assignment to
-branches.
+branches.</p>
 
-The Basic build management should be done in the following sequence:
+<p>The Basic build management should be done in the following sequence:</p>
+
 <pre><code>
-	Advance the specific version (ru, sc, cb, pt) using one, or more, of the
+    Advance the specific version (ru, sc, cb, pt) using one, or more, of the
      IncCyc, IncRev, or IncVer shells
 
     from the *master branch, execute the SetVersion shell on the *master branch
@@ -202,39 +224,47 @@ The Basic build management should be done in the following sequence:
     'push' the *master branch to GitHub/BasicVersion
       git push origin master
 </code></pre>
-Upon completion of the above steps, the active branch will be the last branch
-on which SetVersion operated.
 
-**Updating Within the \*master Branch.**<br>
-At times it may be necessary to udpate shells or other files within the \*master
+<p>Upon completion of the above steps, the active branch will be the last branch
+on which SetVersion operated.</p>
+
+<p><strong>Updating Within the *master Branch.</strong><br>
+At times it may be necessary to udpate shells or other files within the *master
 branch (e.g. SetVersion.sh, README.md). This type of update should be considered
 as a code base modification. Hence, whenever an operation of this type is
 performed, the CurrVersion should be updated with the IncCyc, IncRev, or
 IncVer shell. This sequence of events will leave whatever file(s) have been
-edited and the CurrVersion file as "changed" in the working space.
+edited and the CurrVersion file as "changed" in the working space.</p>
 
-Since this is considered a code base modification, it is imperative to update
-the \*master with the latest version information. To provide a way to track this
-type of update, SetVersion is run on the \*master branch, but no other branches,
-since this was strictly a \*master branch update.<br>
->./SetVersion.sh master<br>
+<p>Since this is considered a code base modification, it is imperative to update
+the *master with the latest version information. To provide a way to track this
+type of update, SetVersion is run on the *master branch, but no other branches,
+since this was strictly a *master branch update.<br></p>
 
-Two additional steps should then be performed: 1) 'push the \*master branch
+<blockquote>
+  <p>./SetVersion.sh master<br></p>
+</blockquote>
+
+<p>Two additional steps should then be performed: 1) 'push the *master branch
 upstream to GitHub, 2) run SetVersion to update the version information in the
-appropriate < machine-branch >.
+appropriate &lt; machine-branch >.</p>
+
 <pre><code>
     git push origin master
     .SetVersion.sh  < machine-branch > -f
 </code></pre>
-This will ensure that the < machine-branch > has been properly updated with the
-latest CurrVersion. It also leaves \*master up-to-date in the upstream
+
+<p>This will ensure that the &lt; machine-branch > has been properly updated with the
+latest CurrVersion. It also leaves *master up-to-date in the upstream
 BasicVersion repository.
 <a href="#IX">Index</a>
-<br>//=============================================================================
+<br>//=============================================================================</p>
+
 <h3 id="5.0">5.0 Significant Notes.</h3>
-When a Release is built for distribution of any of the Basic system
+
+<p>When a Release is built for distribution of any of the Basic system
 libraries or files, it is "branded" with the the release date and the
-CurrVersion value as filename "Basic\_BLD.ver.rev.cyc" so that it is
+CurrVersion value as filename "Basic_BLD.ver.rev.cyc" so that it is
 immediately evident which build level constructed the release accounting files.
 This will facilitate tracking any features and/or errors to build levels.
-<a href="#IX">Index</a>
+<a href="#IX">Index</a></p>

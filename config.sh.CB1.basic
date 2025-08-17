@@ -1,0 +1,15 @@
+# config.sh.CB1.basic -  Basic subsystem Lenovo configuration/system information.
+#	8/10/25.	wmk.
+#
+# Modification History.
+# ---------------------
+# 8/10/25.	wmk.	original; adapted from TutorVersion.
+#
+export 	BASIC_BUILD=1.0.0
+export APPCONFIG_PATH=$HOME/.config/Basic
+export SUBSYS=BASIC
+export codebase=$folderbase/Basic
+export pathbase=$folderbase/Basic
+export git_path=$folderbase/GitHub
+export gitpath=$git_path
+# end config.sh

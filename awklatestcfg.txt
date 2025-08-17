@@ -1,0 +1,6 @@
+BEGIN{ver=0;rev=0;cyc=0}
+END{print ver "." rev "." cyc}
+{reset=0
+ if ($5 > ver){ver = $5;rev=$6;cyc=$7;reset=1};
+ if ( reset == 0 && $6 > rev){rev=$6;cyc=$7;reset=1};
+ if (reset == 0 && $7 > cyc)cyc=$7;;}

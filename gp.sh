@@ -1,5 +1,3 @@
-#!/bin/bash
-# gp - fast git push (master) AcctngVersion.
-#	6/1/25.	wmk.
-~/sysprocs/LOGMSG " git push origin master  # Accounting/AcctngVersion."
-git push origin master
+# gp.sh - git push origin Lenovo > GitHub.
+#	8/10/25.	wmk.
+git push origin Lenovo
